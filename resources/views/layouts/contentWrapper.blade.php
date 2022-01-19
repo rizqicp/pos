@@ -8,12 +8,14 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Blank Page</h1>
+          <h1>{{isset($title) ? $title : ucwords(last(request()->segments()))}}</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Blank Page</li>
+            @if (last(request()->segments()) != "home")
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            @endif
+            <li class="breadcrumb-item active">{{ucwords(last(request()->segments()))}}</li>
           </ol>
         </div>
       </div>

@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->toArray();
-        return view('dashboard')->with($user);
+        $user = Auth::user();
+        $title = "Dashboard";
+        return view('dashboard', compact('user', 'title'));
     }
 }

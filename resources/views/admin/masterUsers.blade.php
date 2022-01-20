@@ -10,7 +10,7 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <button type="button" class="btn btn-primary mb-3">Tambah</button>
+            <button type="button" class="btn btn-primary mb-3" onclick="tambahUser()">Tambah</button>
             <table id="usersTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -485,12 +485,46 @@
     <!-- /.row -->
 </div>
 <!-- /.container-fluid -->
+<div class="modal" id="modalUsers" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formUser" action="" method="POST">
+                @csrf
+                <input type="hidden" class="form-control" id="idUser" name="idUser">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nameUser">Nama</label>
+                        <input type="text" class="form-control" id="nameUser" name="nameUser" placeholder="Nama" autocomplete="false" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailUser">Email</label>
+                        <input type="email" class="form-control" id="emailUser" name="emailUser" placeholder="Email" autocomplete="false" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordUser">Password</label>
+                        <input type="password" class="form-control" id="passwordUser" name="passwordUser" placeholder="Password" autocomplete="false" required minlength="6">
+                        <small id="passwordChangeUser" class="form-text text-muted">Biarkan kosong apabila tidak ingin mengganti password</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="modalSubmit">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('script')
 <script>
     $(function () {
-
         $('#usersTable').DataTable({
             processing: true,
             serverSide: true,
@@ -500,7 +534,9 @@
             columns: [
                 {
                     data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
                 },
                 {
                     data: 'name',
@@ -523,7 +559,76 @@
             ],
             lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]]
         });
-        
     });
+
+    function tambahUser() {
+        $('#formUser').attr('action', "{{route('users.create')}}");
+        $('#modalTitle').html('Tambah User');
+        $('#idUser').val('');
+        $('#nameUser').val('');
+        $('#emailUser').val('');
+        $('#passwordUser').val('');
+        $('#passwordUser').prop('required',true);
+        $('#passwordChangeUser').hide();
+        $('#modalUsers').modal('show');
+    }
+
+    function editUser(id) {
+        let url = "{{route('users.getById',':id')}}";
+        url = url.replace(':id', id);
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(respose){
+                let user = JSON.parse(respose);
+                $('#formUser').attr('action', "{{route('users.update')}}");
+                $('#modalTitle').html('Edit User');
+                $('#idUser').val(user.id);
+                $('#nameUser').val(user.name);
+                $('#emailUser').val(user.email);
+                $('#passwordUser').val('');
+                $('#passwordUser').prop('required',false);
+                $('#passwordChangeUser').show();
+                $('#modalUsers').modal('show');
+            }
+        });
+    }
+
+    function deleteUser(id) {
+        Swal.fire({
+            title: 'Yakin akan menghapus data?',
+            text: "Anda tidak akan dapat mengembalikan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let url = "{{route('users.delete',':id')}}";
+                url = url.replace(':id', id);
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function(){
+                        Swal.fire(
+                            'Terhapus!',
+                            'Data berhasil terhapus.',
+                            'success'
+                        );
+                        location.reload();
+                    },
+                    error: function(){
+                        Swal.fire(
+                            'Gagal!',
+                            'Data gagal dihapus.',
+                            'error'
+                        );
+                    }
+                });
+            }
+        })
+    }
+
 </script>
 @endsection

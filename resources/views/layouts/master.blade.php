@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{asset('storage/img/majooLogo.png')}}" type="image/x-icon">
   <title>POS</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -17,51 +18,54 @@
   <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
-  @include('layouts.nav')
-  <!-- /.navbar -->
+    @include('sweetalert::alert')
+    <!-- Site wrapper -->
+    <div class="wrapper">
+    <!-- Navbar -->
+    @include('layouts.nav')
+    <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  @include('layouts.aside')
+    <!-- Main Sidebar Container -->
+    @include('layouts.aside')
 
-  <!-- Content Wrapper. Contains page content -->
-  @yield('contentWrapper')
-  <!-- /.content-wrapper -->
+    <!-- Content Wrapper. Contains page content -->
+    @yield('contentWrapper')
+    <!-- /.content-wrapper -->
 
-  @include('layouts.footer')
+    @include('layouts.footer')
 
-  <!-- Control Sidebar -->
-  @include('layouts.asideControl')
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    <!-- Control Sidebar -->
+    @include('layouts.asideControl')
+    <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="/adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="/adminlte/plugins/jszip/jszip.min.js"></script>
-<script src="/adminlte/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="/adminlte/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/adminlte/dist/js/demo.js"></script>
+    <!-- jQuery -->
+    <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/adminlte/plugins/jszip/jszip.min.js"></script>
+    <script src="/adminlte/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="/adminlte/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/adminlte/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/adminlte/dist/js/demo.js"></script>
+    <!-- Sweet Alert -->
+    <script src="{{asset('/vendor/sweetalert/sweetalert.all.js')}}"></script>
 
-@hasSection('script')
-   @yield('script')
-@endif
+    @hasSection('script')
+    @yield('script')
+    @endif
 </body>
 </html>

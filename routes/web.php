@@ -32,3 +32,10 @@ Route::get('/category/getById/{id}', 'CategoryController@getById')->name('catego
 Route::post('/category/create', 'CategoryController@create')->name('category.create');
 Route::post('/category/update', 'CategoryController@update')->name('category.update');
 Route::get('/category/delete/{id}', 'CategoryController@delete')->name('category.delete');
+
+Route::get('/supplier', 'SupplierController@index')->name('supplier');
+Route::get('/supplier/getall', 'SupplierController@getAll')->name('supplier.getAll');
+Route::get('/supplier/getById/{id}', 'SupplierController@getById')->name('supplier.getById');
+Route::post('/supplier/create', 'SupplierController@create')->name('supplier.create');
+Route::post('/supplier/update', 'SupplierController@update')->name('supplier.update');
+Route::get('/supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');

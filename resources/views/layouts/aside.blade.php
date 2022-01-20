@@ -57,21 +57,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('supplier')}}" class="nav-link">
                         <i class="fas fa-people-carry nav-icon"></i>
                         <p>Supplier</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-cubes nav-icon"></i>
-                        <p>Produk</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('category')}}" class="nav-link">
                         <i class="fas fa-th  nav-icon"></i>
                         <p>Kategori</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cubes nav-icon"></i>
+                        <p>Produk</p>
                     </a>
                 </li>
                 <li class="nav-item">

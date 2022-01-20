@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
     public function getAll()
     {
-        $categories = DB::table('category')->get();
+        $categories = Category::get();
 
         return Datatables::of($categories)
         ->addIndexColumn()
@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
     public function getById($id)
     {
-        $category = DB::table('category')->where('id', $id)
+        $category = Category::where('id', $id)
         ->first();
 
         return json_encode($category);
@@ -64,7 +64,7 @@ class CategoryController extends Controller
             'nameCategory' => 'required'
         ]);
 
-        $query = DB::table('category')->insert([
+        $query = Category::create([
             'name' => $validation["nameCategory"]
         ]);
 
@@ -83,8 +83,7 @@ class CategoryController extends Controller
             'nameCategory' => 'required'
         ]);
 
-        $query = DB::table('category')
-        ->where('id', $request->idCategory)
+        $query = Category::where('id', $request->idCategory)
         ->update([
             'name' => $validation["nameCategory"]
         ]);
@@ -100,7 +99,7 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $query = DB::table('category')->where('id', $id)->delete();
+        $query = Category::where('id', $id)->delete();
         if ($query) {
             return response()->json([
                 'success' => 'Kategori berhasil dihapus!'

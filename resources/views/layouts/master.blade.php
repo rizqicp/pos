@@ -16,6 +16,13 @@
   <link rel="stylesheet" href="/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
     @include('sweetalert::alert')
@@ -57,15 +64,21 @@
     <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/adminlte/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/adminlte/dist/js/demo.js"></script>
-    <!-- Sweet Alert -->
-    <script src="{{asset('/vendor/sweetalert/sweetalert.all.js')}}"></script>
+    <!-- SweetAlert2 -->
+    <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Select2 -->
+    <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Summernote -->
+    <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
 
     @hasSection('script')
-    @yield('script')
+        @yield('script')
     @endif
 </body>
 </html>

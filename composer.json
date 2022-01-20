@@ -10,6 +10,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "realrashid/sweet-alert": "^4.1",
+        "twbs/bootstrap": "4.6.1",
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {

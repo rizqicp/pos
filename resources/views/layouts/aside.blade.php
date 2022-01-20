@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('product')}}" class="nav-link">
                         <i class="fas fa-cubes nav-icon"></i>
                         <p>Produk</p>
                     </a>

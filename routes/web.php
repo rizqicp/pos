@@ -39,3 +39,12 @@ Route::get('/supplier/getById/{id}', 'SupplierController@getById')->name('suppli
 Route::post('/supplier/create', 'SupplierController@create')->name('supplier.create');
 Route::post('/supplier/update', 'SupplierController@update')->name('supplier.update');
 Route::get('/supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');
+
+Route::get('/product', 'ProductController@index')->name('product');
+Route::get('/product/add', 'ProductController@add')->name('product.add');
+Route::get('/product/edit/{id}', 'ProductController@edit')->name('product.edit');
+Route::get('/product/getall', 'ProductController@getAll')->name('product.getAll');
+// Route::get('/product/getById/{id}', 'ProductController@getById')->name('product.getById');
+Route::post('/product/create', 'ProductController@create')->name('product.create');
+Route::post('/product/update', 'ProductController@update')->name('product.update');
+Route::get('/product/delete/{id}', 'ProductController@delete')->name('product.delete');

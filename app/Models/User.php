@@ -31,4 +31,9 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo(Role::class);
     }
+
+    public function transaction()
+    {
+        return $this->belongsToMany(Transaction::class);
+    }
 }

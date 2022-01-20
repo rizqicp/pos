@@ -16,7 +16,7 @@ class RolesTableSeeder extends Seeder
         ]);
 
         App\Models\Role::create([
-            'name' => 'User'
+            'name' => 'Pelanggan'
         ]);
     }
 }

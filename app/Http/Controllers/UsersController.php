@@ -132,7 +132,7 @@ class UsersController extends Controller
         $query = User::where('id', $id)->delete();
         if ($query) {
             return response()->json([
-                'success' => 'Record deleted successfully!'
+                'success' => 'User berhasil dihapus!'
             ]);
         }
     }

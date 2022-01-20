@@ -69,6 +69,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('category')}}" class="nav-link">
+                        <i class="fas fa-th  nav-icon"></i>
+                        <p>Kategori</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('users')}}" class="nav-link">
                         <i class="fas fa-users nav-icon"></i>
                         <p>Users</p>

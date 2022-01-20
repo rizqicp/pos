@@ -10,7 +10,7 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <button type="button" class="btn btn-primary mb-3" onclick="tambahUser()">Tambah</button>
+            <button type="button" class="btn btn-primary mb-3" onclick="addUser()">Tambah</button>
             <table id="usersTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -561,7 +561,7 @@
         });
     });
 
-    function tambahUser() {
+    function addUser() {
         $('#formUser').attr('action', "{{route('users.create')}}");
         $('#modalTitle').html('Tambah User');
         $('#idUser').val('');

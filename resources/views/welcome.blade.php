@@ -1,96 +1,81 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | General UI</title>
 
-        <title>Laravel</title>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+</head>
+<body class="layout-top-nav">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+          <h5>Majoo Teknologi Indonesia</h5>
+      </ul>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        @if (Route::has('login'))
+            @auth
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ url('/home') }}" class="nav-link">Home</a>
+                </li>
+            @else
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('login') }}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('register') }}" class="nav-link">Register</a>
+                </li>
+            @endauth
+        @endif
+    </ul>
+  </nav>
+  <!-- /.navbar -->
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <div class="container">
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                {{-- <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> --}}
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Produk</h3>
             </div>
         </div>
-    </body>
+        <div class="row text-center">
+            @foreach ($products as $product)
+                <div class="col-lg-3 col-md-6 hero-feature">
+                    <div class="card">
+                        <img src="{{asset('storage/uploads/'.$product->image)}}" style="max-height:320px; width:100%;" alt="">
+                        <div class="caption">
+                            <h3>{{$product->name}}</h3>
+                            <h5><sup>Rp</sup>{{$product->sell_price}}</h5>
+                            {!! $product->description !!}
+                            <p><a href="{{route('home')}}" class="btn btn-success">Beli!</a></p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+    </div>
+  </div>
+  <!-- /.content-wrapper -->
+
+<!-- jQuery -->
+<script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/adminlte/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/adminlte/dist/js/demo.js"></script>
+</body>
 </html>

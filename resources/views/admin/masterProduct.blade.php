@@ -14,12 +14,13 @@
             <table id="productTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                    <th>No</th>
+                    <th style="width:5%">No</th>
                     <th>Nama</th>
                     <th>Kategori</th>
                     <th>Harga Jual</th>
                     <th>Harga Beli</th>
-                    <th>Aksi</th>
+                    <th>Stok</th>
+                    <th style="width:10%">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,6 +70,10 @@
                 {
                     data: 'sell_price',
                     name: 'sell_price',
+                },
+                {
+                    data: 'quantity',
+                    name: 'quantity',
                 },
                 {
                     data: 'aksi',

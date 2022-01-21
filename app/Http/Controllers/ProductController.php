@@ -53,7 +53,6 @@ class ProductController extends Controller
         $categories = Category::get();
         $product = Product::where('id', $id)->first();
         $title = "Master Produk";
-        // dd(Storage::exists('public/uploads/'.$product->image));
         return view('admin.editProduct', compact('user', 'title', 'suppliers', 'categories', 'product'));
     }
 
@@ -77,14 +76,6 @@ class ProductController extends Controller
         ->rawColumns(['aksi'])
         ->make(true);
     }
-
-    // public function getById($id)
-    // {
-    //     $product = Product::where('id', $id)
-    //     ->first();
-
-    //     return json_encode($product);
-    // }
 
     public function create(Request $request)
     {

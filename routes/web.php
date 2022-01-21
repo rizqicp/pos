@@ -13,10 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users', 'UsersController@index')->name('users');
@@ -44,7 +41,21 @@ Route::get('/product', 'ProductController@index')->name('product');
 Route::get('/product/add', 'ProductController@add')->name('product.add');
 Route::get('/product/edit/{id}', 'ProductController@edit')->name('product.edit');
 Route::get('/product/getall', 'ProductController@getAll')->name('product.getAll');
-// Route::get('/product/getById/{id}', 'ProductController@getById')->name('product.getById');
 Route::post('/product/create', 'ProductController@create')->name('product.create');
 Route::post('/product/update', 'ProductController@update')->name('product.update');
 Route::get('/product/delete/{id}', 'ProductController@delete')->name('product.delete');
+
+Route::get('/transaction/buy', 'TransactionController@indexBuy')->name('transaction.buy');
+Route::get('/transaction/getallbuy', 'TransactionController@getAllBuy')->name('transaction.getAllBuy');
+
+Route::get('/transaction/sell', 'TransactionController@indexSell')->name('transaction.sell');
+
+
+Route::get('/transaction/add', 'TransactionController@add')->name('transaction.add');
+Route::get('/transaction/edit/{id}', 'TransactionController@edit')->name('transaction.edit');
+Route::get('/transaction/getall', 'TransactionController@getAll')->name('transaction.getAll');
+Route::get('/transaction/getById/{id}', 'TransactionController@getById')->name('transaction.getById');
+
+Route::post('/transaction/create', 'TransactionController@create')->name('transaction.create');
+Route::post('/transaction/update', 'TransactionController@update')->name('transaction.update');
+Route::get('/transaction/delete/{id}', 'TransactionController@delete')->name('transaction.delete');

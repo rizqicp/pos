@@ -6,18 +6,21 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Data Supplier</h3>
+            <h3 class="card-title">Data Pembelian</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <button type="button" class="btn btn-primary mb-3" onclick="addSupplier()">Tambah</button>
-            <table id="supplierTable" class="table table-bordered table-hover">
+            <button type="button" class="btn btn-primary mb-3" onclick="addTransaction()">Tambah</button>
+            <table id="transactionTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
                     <th style="width:5%">No</th>
-                    <th>Nama</th>
-                    <th>Telepon</th>
-                    <th>Alamat</th>
+                    <th>Tanggal & Waktu</th>
+                    <th>Produk</th>
+                    <th>Kategori</th>
+                    <th>Supplier</th>
+                    <th>Jumlah Produk</th>
+                    <th>Jumlah Harga</th>
                     <th style="width:10%">Aksi</th>
                 </tr>
               </thead>
@@ -35,7 +38,7 @@
     <!-- /.row -->
 </div>
 <!-- /.container-fluid -->
-<div class="modal" id="modalSupplier" tabindex="-1" role="dialog">
+<div class="modal" id="modalTransaction" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -44,21 +47,22 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formSupplier" action="" method="POST">
+            <form id="formTransaction" action="" method="POST">
                 @csrf
-                <input type="hidden" class="form-control" id="idSupplier" name="idSupplier">
+                <input type="hidden" class="form-control" id="idTransaction" name="idTransaction">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nameSupplier">Nama</label>
-                        <input type="text" class="form-control" id="nameSupplier" name="nameSupplier" placeholder="Nama" autocomplete="false" required>
+                        <label for="productTransaction">Produk</label>
+                        <select class="form-control select2Form" name="productTransaction" id="productTransaction" required>
+                            <option value=""></option>
+                            @foreach ($products as $product)
+                                <option value="{{$product->id}}">{{$product->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="phoneSupplier">Telepon</label>
-                        <input type="number" class="form-control" id="phoneSupplier" name="phoneSupplier" placeholder="Telepon" autocomplete="false" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="addressSupplier">Alamat</label>
-                        <input type="text" class="form-control" id="addressSupplier" name="addressSupplier" placeholder="Alamat" autocomplete="false" required>
+                        <label for="quantityTransaction">Jumlah</label>
+                        <input type="number" class="form-control" id="quantityTransaction" name="quantityTransaction" placeholder="Jumlah" autocomplete="false" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -74,12 +78,12 @@
 @section('script')
 <script>
     $(function () {
-        $('#supplierTable').DataTable({
+        $('#transactionTable').DataTable({
             processing: true,
             serverSide: true,
             responsive: true,
             autoWidth: false,
-            ajax: "{{route('supplier.getAll')}}",
+            ajax: "{{route('transaction.getAllBuy')}}",
             columns: [
                 {
                     data: 'DT_RowIndex',
@@ -88,16 +92,28 @@
                     searchable: false
                 },
                 {
-                    data: 'name',
-                    name: 'name',
+                    data: 'date',
+                    name: 'date'
                 },
                 {
-                    data: 'phone',
-                    name: 'phone',
+                    data: 'product_name',
+                    name: 'product_name'
                 },
                 {
-                    data: 'address',
-                    name: 'address',
+                    data: 'category_name',
+                    name: 'category_name'
+                },
+                {
+                    data: 'supplier_name',
+                    name: 'supplier_name'
+                },
+                {
+                    data: 'quantity',
+                    name: 'quantity'
+                },
+                {
+                    data: 'total_price',
+                    name: 'total_price'
                 },
                 {
                     data: 'aksi',
@@ -108,38 +124,41 @@
             ],
             lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]]
         });
+        $('.select2Form').select2({
+            placeholder: "Pilih salah satu",
+            theme: 'bootstrap4'
+        });
     });
 
-    function addSupplier() {
-        $('#formSupplier').attr('action', "{{route('supplier.create')}}");
-        $('#modalTitle').html('Tambah Supplier');
-        $('#idSupplier').val('');
-        $('#nameSupplier').val('');
-        $('#phoneSupplier').val('');
-        $('#addressSupplier').val('');
-        $('#modalSupplier').modal('show');
+    function addTransaction() {
+        $('#formTransaction').attr('action', "{{route('transaction.create')}}");
+        $('#modalTitle').html('Tambah Transaksi');
+        $('#idTransaction').val('');
+        $('#productTransaction').val('');
+        $('#quantityTransaction').val('');
+        $('#modalTransaction').modal('show');
     }
 
-    function editSupplier(id) {
-        let url = "{{route('supplier.getById',':id')}}";
+    function editTransaction(id) {
+        let url = "{{route('transaction.getById',':id')}}";
         url = url.replace(':id', id);
         $.ajax({
             type: 'GET',
             url: url,
             success: function(respose){
-                let supplier = JSON.parse(respose);
-                $('#formSupplier').attr('action', "{{route('supplier.update')}}");
-                $('#modalTitle').html('Edit Supplier');
-                $('#idSupplier').val(supplier.id);
-                $('#nameSupplier').val(supplier.name);
-                $('#phoneSupplier').val(supplier.phone);
-                $('#addressSupplier').val(supplier.address);
-                $('#modalSupplier').modal('show');
+                let transaction = JSON.parse(respose);
+                $('#formTransaction').attr('action', "{{route('transaction.update')}}");
+                $('#modalTitle').html('Edit Transaksi');
+                $('#idTransaction').val(transaction.id);
+                $('#productTransaction').val(transaction.product_id);
+                $("#productTransaction").trigger('change');
+                $('#quantityTransaction').val(transaction.quantity);
+                $('#modalTransaction').modal('show');
             }
         });
     }
 
-    function deleteSupplier(id) {
+    function deleteTransaction(id) {
         Swal.fire({
             title: 'Yakin akan menghapus data?',
             text: "Anda tidak akan dapat mengembalikan ini!",
@@ -150,7 +169,7 @@
             confirmButtonText: 'Ya, Hapus!'
         }).then((result) => {
             if (result.isConfirmed) {
-                let url = "{{route('supplier.delete',':id')}}";
+                let url = "{{route('transaction.delete',':id')}}";
                 url = url.replace(':id', id);
                 $.ajax({
                     type: 'GET',

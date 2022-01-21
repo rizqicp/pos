@@ -14,11 +14,11 @@
             <table id="usersTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                    <th>No</th>
+                    <th style="width:5%">No</th>
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Aksi</th>
+                    <th style="width:10%">Aksi</th>
                 </tr>
               </thead>
               <tbody>

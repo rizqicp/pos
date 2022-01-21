@@ -95,7 +95,7 @@ class TransactionController extends Controller
         ->select(
             'transaction.*',
             'product.name as product_name',
-            'product.buy_price as product_buy_price',
+            'product.buy_price as product_sell_price',
             'category.name as category_name',
             'users.name as user_name'
         )
@@ -106,7 +106,7 @@ class TransactionController extends Controller
         return Datatables::of($transactions)
         ->addIndexColumn()
         ->addColumn('total_price',function($transaction){
-            return $transaction->quantity * $transaction->product_buy_price;
+            return $transaction->quantity * $transaction->product_sell_price;
         })
         ->addColumn('aksi',function($transaction){
             $out ='<center>';

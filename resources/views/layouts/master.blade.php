@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="{{asset('storage/img/majooLogo.png')}}" type="image/x-icon">
+  <link rel="icon" href="{{ URL::to('/') }}/img/majooLogo.png" type="image/x-icon">
   <title>Majoo Teknologi Indonesia</title>
 
   <!-- Google Font: Source Sans Pro -->

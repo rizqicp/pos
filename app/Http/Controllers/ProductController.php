@@ -80,7 +80,7 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $validation = $request->validate([
-            'nameProduct' => 'required|unique:product,name',
+            'nameProduct' => 'required',
             'supplierProduct' => 'required',
             'categoryProduct' => 'required',
             'buyPriceProduct' => 'required',
@@ -117,7 +117,7 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $validation = $request->validate([
-            'nameProduct' => 'required|unique:product,name',
+            'nameProduct' => 'required',
             'supplierProduct' => 'required',
             'categoryProduct' => 'required',
             'buyPriceProduct' => 'required',

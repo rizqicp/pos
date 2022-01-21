@@ -17,8 +17,8 @@
                     <th style="width:5%">No</th>
                     <th>Nama</th>
                     <th>Kategori</th>
-                    <th>Harga Jual</th>
                     <th>Harga Beli</th>
+                    <th>Harga Jual</th>
                     <th>Stok</th>
                     <th style="width:10%">Aksi</th>
                 </tr>

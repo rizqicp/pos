@@ -14,7 +14,7 @@
                 @csrf
                 <div class="modal-body">
                     <div style="display: flex; justify-content: center;">
-                        <img id="imageProductPreview" src="{{asset('storage/img/placeholder.png')}}" style="max-height:300px;max-width:200px;height:auto;width:auto;" alt="Gambar Produk">
+                        <img id="imageProductPreview" src="{{ URL::to('/') }}/img/placeholder.png" style="max-height:300px;max-width:200px;height:auto;width:auto;" alt="Gambar Produk">
                     </div>
                     <div class="custom-file mt-3 mb-3">
                         <input type="file" class="custom-file-input" id="imageProduct" name="imageProduct" accept="image/png, image/jpg, image/jpeg">
@@ -90,7 +90,7 @@
             if (file) {
                 imageProductPreview.src = URL.createObjectURL(file);
             }else{
-                imageProductPreview.src = "{{asset('storage/img/placeholder.png')}}";
+                imageProductPreview.src = "{{ URL::to('/') }}/img/placeholder.png";
             }
         }
     });

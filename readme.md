@@ -4,7 +4,7 @@ Ikuti langkah berikut untuk melakukan installasi:
 
 - Buka terminal di local server anda lalu jalankan perintah ```git clone https://github.com/rizqicp/pos.git```
 - Setelah terinstall, buat database kosong lalu simpan.
-- Masuk ke directory aplikasi pos, lakukan konfigurasi pada file database ```.env```, contohnya seperti ini
+- Masuk ke directory aplikasi pos, lakukan konfigurasi pada file database ```.env```, contohnya seperti dibawah ini, atau copy file ```.env.example```
     ```
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -23,6 +23,25 @@ Ikuti langkah berikut untuk melakukan installasi:
 
 ## Masalah yang mungkin dijumpai
 
-- Apabila tidak dapat melakukan input pada form, coba jalankan ```php artisan key:generate```
+- Apabila mengalami error 'No application encryption key has been specified', coba jalankan ```php artisan key:generate```
 - Gambar pada produk secara default tidak ada, ini dikarenakan directory penyimpanan masuk dalam list ```.gitignore```
   lakukan edit atau input baru pada produk untuk mengatasi masalah ini.
+
+## Diagram aplikasi
+- Dokumen teknis dalam bentuk diagram dapat dilihat di dalam directory <a href="https://github.com/rizqicp/pos/tree/master/dokumentasi">pos/dokumentasi</a>
+
+- Use Case Diagram
+ 
+![alt text](https://github.com/rizqicp/pos/blob/master/dokumentasi/UseCaseDiagramPOS.jpg?raw=true)
+
+
+
+- Activity Diagram 
+ 
+![alt text](https://github.com/rizqicp/pos/blob/master/dokumentasi/ActivityDiagramPOS.jpg?raw=true)
+
+
+
+- Entity Relationship Diagram
+ 
+![alt text](https://github.com/rizqicp/pos/blob/master/dokumentasi/ERDDiagramPOS.jpg?raw=true)

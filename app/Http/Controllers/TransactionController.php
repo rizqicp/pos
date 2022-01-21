@@ -149,7 +149,6 @@ class TransactionController extends Controller
 
     public function create(Request $request)
     {
-        // dd($request->all());
         $validation = $request->validate([
             'productTransaction' => 'required',
             'quantityTransaction' => 'required'
@@ -186,7 +185,7 @@ class TransactionController extends Controller
                 return redirect('/transaction/buy');
             }
         }else{
-            return redirect('/home');
+            return redirect('/consumer/buy');
         }
 
 

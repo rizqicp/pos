@@ -26,6 +26,9 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $title = "Dashboard";
+        if ($user->role_id != 1) {
+            return redirect()->route('consumer');
+        }
         return view('dashboard', compact('user', 'title'));
     }
 }

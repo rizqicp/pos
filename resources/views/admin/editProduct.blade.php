@@ -29,7 +29,6 @@
                     <div class="form-group">
                         <label for="supplierProduct">Supplier</label>
                         <select class="form-control select2Form" name="supplierProduct" id="supplierProduct" value="{{$product->id_supplier}}" required>
-                            <option value=""></option>
                             @foreach ($suppliers as $supplier)
                                 <option value="{{$supplier->id}}">{{$supplier->name}}</option>
                             @endforeach
@@ -38,7 +37,6 @@
                     <div class="form-group">
                         <label for="categoryProduct">Kategori</label>
                         <select class="form-control select2Form" name="categoryProduct" id="categoryProduct" value="{{$product->id_category}}" required>
-                            <option value=""></option>
                             @foreach ($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -82,7 +80,6 @@
 <script>
     $(function () {
         $('.select2Form').select2({
-            placeholder: "Pilih salah satu",
             theme: 'bootstrap4'
         });
         $('#descriptionProduct').summernote();

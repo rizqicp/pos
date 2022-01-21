@@ -53,3 +53,7 @@ Route::get('/transaction/getById/{id}', 'TransactionController@getById')->name('
 Route::post('/transaction/create', 'TransactionController@create')->name('transaction.create');
 Route::post('/transaction/update', 'TransactionController@update')->name('transaction.update');
 Route::get('/transaction/delete/{id}', 'TransactionController@delete')->name('transaction.delete');
+
+Route::get('/consumer', 'ConsumerController@index')->name('consumer');
+Route::get('/consumer/buy', 'ConsumerController@indexBuy')->name('consumer.buy');
+Route::get('/consumer/getall', 'ConsumerController@getAll')->name('consumer.getAll');

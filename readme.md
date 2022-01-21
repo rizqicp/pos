@@ -1,5 +1,7 @@
-## Quickstart
+## Point Of Sales
+![alt text](https://github.com/rizqicp/pos/blob/master/dokumentasi/screenshoot/BerandaAplikasi.PNG?raw=true)
 
+## Quickstart
 Ikuti langkah berikut untuk melakukan installasi:
 
 - Buka terminal di local server anda lalu jalankan perintah ```git clone https://github.com/rizqicp/pos.git```
@@ -18,6 +20,7 @@ Ikuti langkah berikut untuk melakukan installasi:
 - Terminal akan mendownload dependensi untuk program, ini dapat memakan waktu cukup lama tergantung koneksi anda.
 - Setelah selesai, jalankan ```php artisan migrate``` untuk membuat tabel pada database yang kita buat tadi.
 - Lalu jalankan ```php artisan db:seed``` untuk mengisi tabel dengan data yang sudah disiapkan.
+- Jalankan ```php artisan storage:link``` untuk membuka akses penyimpanan.
 - Selesai, aplikasi dapat dijalankan dengan ```php artisan serve``` atau melalui ```localhost/pos/public```
 
 

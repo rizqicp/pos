@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('transaction.sell')}}" class="nav-link">
                         <i class="fas fa-cash-register nav-icon"></i>
                         <p>Penjualan</p>
                     </a>
